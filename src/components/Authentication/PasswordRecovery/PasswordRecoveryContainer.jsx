@@ -9,7 +9,6 @@ import PasswordRecovery from './PasswordRecovery';
 const PasswordRecoveryContainer = (props) => {
     let uid = props.match.params.uid;
     let token = props.match.params.token;
-    console.log(props.confirmSuccess)
     return <PasswordRecovery uid = { uid } token = { token } resetConfirmThunk = { props.resetConfirmThunk }
                              confirmSuccess = { props.confirmSuccess }/>
     

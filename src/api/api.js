@@ -45,6 +45,6 @@ export const authAPI = {
 
         return instance.post(`api/auth/users/reset_password_confirm/`, body).then(response => {
             return response.data;
-        });
+        })
     }
 }

@@ -67,6 +67,13 @@ export const useStyles = makeStyles(theme => ({
         fontWeight: "bold",
         color: "#2d1674"
     },
+    errorText: {
+        fontFamily: "Poppins",
+        color: "red",
+        padding: "1% 0 1% 0",
+        fontSize: "14px",
+        marginBottom: "4%",
+    }
 
 }))
 
@@ -76,6 +83,9 @@ const LoginForm = (props) => {
     const cls = useStyles();
     return (
         <form onSubmit={props.handleSubmit}>
+            {props.error && <div className = {cls.errorText}> 
+                {props.error}
+            </div>}
             <div>
                 <Field name={'email'} label={'Электронный адрес'} component={FormControlText} validate={[emailRequired, Length_5_50]} />
             </div>
@@ -101,6 +111,7 @@ const LoginForm = (props) => {
         </form>
     )
 }
+
 const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm)
 
 const Login = (props) => {

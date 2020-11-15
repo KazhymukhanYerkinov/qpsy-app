@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import SidebarItem from './SidebarItem/SidebarItem';
 const styles = theme => ({
     drawerPaper: {
-        width: 240,
+        width: 270,
         height: "100vh",
         [theme.breakpoints.up('md')]: {
           position: 'relative',
@@ -32,7 +32,8 @@ const Sidebar = (props) => {
                         keepMounted: true
                     }}
                 >
-                    <SidebarItem />
+                    <SidebarItem logoutThunk = { props.logoutThunk } user = { props.user } isAdmin = { props.isAdmin }
+                                 isSuperPsy = { props.isSuperPsy }  isPsy = { props.isPsy } />
                     
                 </Drawer>
             </Hidden>
@@ -43,7 +44,8 @@ const Sidebar = (props) => {
                     classes={{
                         paper: classes.drawerPaper,
                     }}>
-                    <SidebarItem />
+                    <SidebarItem logoutThunk = { props.logoutThunk } user = { props.user } isAdmin = { props.isAdmin } 
+                                 isSuperPsy = { props.isSuperPsy } isPsy = { props.isPsy }/>
                 </Drawer>
             </Hidden>
         </>

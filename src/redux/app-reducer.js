@@ -1,4 +1,4 @@
-import { checkAuthThunk } from "./auth-reducer";
+import { checkAuthThunk, loadUserThunk } from "./auth-reducer";
 
 const SET_TOGGLE_SIDEBAR = 'SET_TOGGLE_SIDEBAR';
 const INITIALIZED_SUCCESS = 'INITIALIZED_SUCESS';
@@ -31,10 +31,12 @@ export const setToggleSidebar = () => ({ type: SET_TOGGLE_SIDEBAR });
 
 export const initSuccessThunk = () => (dispatch) => {
 
-    let promise = dispatch(checkAuthThunk());
+    let promise1 = dispatch(checkAuthThunk());
+    let promise2 = dispatch(loadUserThunk());
 
-    Promise.all([promise]).then(() => {
+    Promise.all([promise1, promise2]).then(() => {
         dispatch(initSuccess())
+
     })
 }
 

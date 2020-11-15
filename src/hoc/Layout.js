@@ -6,7 +6,7 @@ const Layout = (props) => {
     useEffect( () => {
         const fetchData = async () => {
             try {
-                props.loadUserThunk();
+                // props.loadUserThunk();
             } catch (err) {
                 console.log("LAYOUT PAGE ERROR")
             }

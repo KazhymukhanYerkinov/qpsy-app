@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie'
+import { reset, stopSubmit } from 'redux-form';
 import { authAPI } from '../api/api';
 
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -10,11 +11,9 @@ const LOAD_USER_FAIL = 'LOAD_USER_FAIL';
 const AUTHENTICATED_SUCCESS = 'AUTHENTICATED_SUCCESS';
 const AUTHENTICATED_FAIL = 'AUTHENTICATED_FAIL';
 
-const PASSWORD_RESET_SUCCESS = 'PASSWORD_RESET_SUCCESS';
-const PASSWORD_RESET_FAIL = 'PASSWORD_RESET_FAIL';
-
 const PASSWORD_RESET_CONFIRM_SUCCESS = 'PASSWORD_RESET_CONFIRM_SUCCESS';
-const PASSWORD_RESET_CONFIRM_FAIL = 'PASSWORD_RESET_CONFIRM_FAIL';
+const LOGOUT = 'LOGOUT';
+
 
 
 
@@ -22,9 +21,12 @@ const PASSWORD_RESET_CONFIRM_FAIL = 'PASSWORD_RESET_CONFIRM_FAIL';
 let initialState = {
     access: Cookies.get('access'),
     isAuth: false,
-    user: {},
+    user: {},       
 
     confirmSuccess: false,
+    isAdmin: 'Психолог',
+    isSuperPsy: 'СуперПсихолог',
+    isPsy: 'Администратор',
 }
 
 const authReducer = (state = initialState, action) => {
@@ -63,6 +65,7 @@ const authReducer = (state = initialState, action) => {
                 user: null
             }
         case LOGIN_FAIL:
+        case LOGOUT:
             Cookies.remove('access');
             return {
                 ...state,
@@ -90,6 +93,7 @@ export const loadUserThunk = () => async (dispatch) => {
     if (Cookies.get('access')) {
         try {
             let data = await authAPI.loadUser();
+            console.log(data);
             dispatch({ type: LOAD_USER_SUCCESS, payload: data });
             
         } catch(err) {
@@ -111,6 +115,7 @@ export const loginThunk = (email, password, remember_me) => async (dispatch) => 
         dispatch(loadUserThunk());
 
     } catch(err) {
+        dispatch(stopSubmit("login", {_error: "Неправильный адрес электронной почты или пароль"}))
         dispatch({ type: LOGIN_FAIL });
     }
 }
@@ -118,18 +123,28 @@ export const loginThunk = (email, password, remember_me) => async (dispatch) => 
 export const resetPasswordThunk = (email) => async (dispatch) => {
     try {
         await authAPI.resetPassword(email);
+        dispatch(reset("email_recovery"));
     } catch (err) {
         console.log(err)
     }
 }
 
 export const resetConfirmThunk = (uid, token, new_password, re_new_password) => async (dispatch) => {
-    try {
-        await authAPI.confirmPassword(uid, token, new_password);
-        dispatch(setConfirmSuccess(true))
-    } catch (err) {
-        console.log(err);
-    }   
+    if (new_password === re_new_password) {
+        try {
+            await authAPI.confirmPassword(uid, token, new_password);
+            dispatch(setConfirmSuccess(true))
+        } catch (err) {
+            console.log(err);
+        }   
+    } 
+    else {
+        dispatch(stopSubmit("password_recovery", {_error: " Пароли не совпадают. Введите повторно пароль и подтверждение."}))
+    }
+}
+
+export const logoutThunk = () => (dispatch) => {
+    dispatch({ type: LOGOUT });
 }
 
 

@@ -12,10 +12,10 @@ import { useLocation } from 'react-router-dom';
 const useStyles = makeStyles(theme => ({
     appBar: {
         position: 'absolute',
-        marginLeft: 240,
+        marginLeft: 270,
         
         [theme.breakpoints.up('md')]: {
-            width: `calc(100% - ${240}px)`,
+            width: `calc(100% - ${270}px)`,
         },
     },
     navIconHide: {
@@ -30,9 +30,11 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 const Header = (props) => {
+    
     const cls = useStyles();
 
     const location = useLocation();
+    
     
 
     return (
@@ -47,8 +49,12 @@ const Header = (props) => {
                 </IconButton>
 
 
-                {location.pathname === '/chat' && <SearchBar
+                {location.pathname.includes('/chat/') && <SearchBar
                     placeholder = "Поиск сообщений..."
+                    className = {cls.searchInput}
+                />}
+                 {location.pathname === '/' && <SearchBar
+                    placeholder = "Поиск пользователей..."
                     className = {cls.searchInput}
                 />}
 
@@ -60,5 +66,6 @@ const Header = (props) => {
         </AppBar>
     )
 }
+
 
 export default Header;

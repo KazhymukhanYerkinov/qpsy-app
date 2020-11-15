@@ -11,3 +11,8 @@ export const LengthCreator = (minLen, maxLen) => (value) => {
     else if (value.length < minLen) return `Минимальная длина ${minLen} символов`
     return undefined;   
 }
+
+export const passwordRequired = value => {
+    if (/^(?=.*[a-zA-Z]).{1,}$/.exec(value) === null) return "Хотя бы одна буква"
+    return undefined;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { makeStyles } from "@material-ui/core/styles";
 import { FormControlPassword } from '../../commons/FormControl/FormControl';
-import { LengthCreator, textRequired } from '../../../validators/validator';
+import { LengthCreator, passwordRequired, textRequired } from '../../../validators/validator';
 import { Button } from '@material-ui/core';
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -63,9 +63,17 @@ export const useStyles = makeStyles(theme => ({
         fontWeight: "bold",
         color: "#2d1674"
     },
+    errorText: {
+        fontFamily: "Poppins",
+        fontSize: "14px",
+        color: "red",
+        marginBottom: "5%",
+    }
 }));
 
 const Length_5_50 = LengthCreator(5, 50);
+
+
 
 const PasswordRecoveryForm = (props) => {
     const cls = useStyles();
@@ -74,12 +82,20 @@ const PasswordRecoveryForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
 
+            {props.error && <div className = {cls.errorText}>
+                {props.error}
+            </div>}
+
+            <div className="d-flex justify-content-start">
+                <span className={cls.titlePas}> Восстановление пароля </span>
+            </div>
+
             <div className="my-3">
-                <Field name={'new_password'} label={'Создать новый пароль'} component={FormControlPassword} validate={[textRequired, Length_5_50]} />
+                <Field name={'new_password'} label={'Создать новый пароль'} component={FormControlPassword} validate={[textRequired, Length_5_50, passwordRequired]} />
             </div>
 
             <div className="my-4">
-                <Field name={'re_new_password'} label={'Повторить пароль'} component={FormControlPassword} validate={[textRequired, Length_5_50]} />
+                <Field name={'re_new_password'} label={'Повторить пароль'} component={FormControlPassword} validate={[textRequired, Length_5_50, passwordRequired]} />
             </div>
 
             <div className="d-flex justify-content-end">
@@ -114,9 +130,7 @@ const PasswordRecovery = (props) => {
                         </div>
                         <CardContent>
                             <div>
-                                <div className="d-flex justify-content-start">
-                                    <span className={cls.titlePas}> Восстановление пароля </span>
-                                </div>
+                                
 
                                 <div>
                                     <PasswordRecoveryReduxForm onSubmit={onSubmit} />

@@ -49,5 +49,8 @@ class Root extends React.Component {
 }
 
 
-let mapStateToProps = (state) => ({ initialized: state.appPage.initialized })
+let mapStateToProps = (state) => ({ 
+    initialized: state.appPage.initialized,
+    
+})
 export default connect(mapStateToProps, { initSuccessThunk })(Root);

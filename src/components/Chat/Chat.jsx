@@ -5,6 +5,7 @@ import { Fab, Grid, Input, InputAdornment, OutlinedInput, TextField, Typography 
 import SendSharpIcon from '@material-ui/icons/SendSharp';
 import SentimentSatisfiedSharpIcon from '@material-ui/icons/SentimentSatisfiedSharp';
 import AttachFileSharpIcon from '@material-ui/icons/AttachFileSharp';
+import { withRouter } from 'react-router-dom';
 
 
 
@@ -121,8 +122,9 @@ const useStyles = makeStyles(theme => ({
 
 }))
 
-const Chat = () => {
+const Chat = (props) => {
     const cls = useStyles();
+    
     return (
         <main className={cls.main}>
                 <div className={cls.toolBar} />
@@ -236,4 +238,5 @@ const chats = [
     }
 ];
 
-export default Chat;
+
+export default withRouter(Chat);

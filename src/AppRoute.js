@@ -8,6 +8,10 @@ import Chat from './components/Chat/Chat';
 import { compose } from 'redux';
 import { WithAuthRedirect } from './hoc/WithAuthRedirect';
 import { connect } from 'react-redux';
+import Users from './components/Users/Users';
+import UsersContainer from './components/Users/UsersContainer';
+import Settings from './components/Settings/Settings';
+import Tape from './components/Tape/Tape';
 
 
 
@@ -25,20 +29,32 @@ const useStyles = makeStyles(theme => ({
   
 }))
 
-const App = () => {
+const App = (props) => {
   const cls = useStyles();
+
+  if (!props.user) {
+    return <div></div>
+  } 
   return (
     
       <div className = {cls.root}>
           <HeaderContainer />
           <SidebarContainer />
+          <Route exact path = '/' render = { () => <UsersContainer /> } />
+          <Route exact path = '/chat/:id/' render = { () => <Chat /> } />
+          <Route exact path = '/settings' render = { () => <Settings /> } />
+          <Route exact path = '/tape' render = { () => <Tape /> } />
           
-          <Route exact path = '/chat'
-                render = { () => <Chat /> } />
+          
           
       </div>
   )
 }
 
+let mapStateToProps = (state) => ({
+  user: state.authPage.user
+})
 
-export default compose( WithAuthRedirect, connect(null, {}))(App);
+
+
+export default compose( WithAuthRedirect, connect(mapStateToProps, {}))(App);
