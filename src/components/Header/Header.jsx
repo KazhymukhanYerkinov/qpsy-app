@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Badge, IconButton, Toolbar } from '@material-ui/core';
@@ -29,12 +29,20 @@ const useStyles = makeStyles(theme => ({
         width: "90%"
     }
 }))
+
+
 const Header = (props) => {
     
     const cls = useStyles();
 
     const location = useLocation();
-    
+
+    const onSubmit = (data) => {
+        console.log(data);
+    }
+
+    const [value, setValue] = useState("");
+    const [chat, setChat] = useState("");
     
 
     return (
@@ -51,12 +59,22 @@ const Header = (props) => {
 
                 {location.pathname.includes('/chat/') && <SearchBar
                     placeholder = "Поиск сообщений..."
+                    value = { chat }
+                    onChange = {(e) => setChat(e)}
+                    onRequestSearch = {() => onSubmit(chat)}
                     className = {cls.searchInput}
                 />}
+
                  {location.pathname === '/' && <SearchBar
                     placeholder = "Поиск пользователей..."
+                    value = { value }
+                    onChange = {(e) => setValue(e)}
+                    onRequestSearch = {() => onSubmit(value) }
                     className = {cls.searchInput}
                 />}
+                
+                {!location.pathname.includes('/chat/') && location.pathname !== '/' && <div className = {cls.searchInput}> </div>}
+
 
                  
                 <Badge color = "secondary" variant = "dot">

@@ -1,4 +1,4 @@
-import { Avatar, List, ListItem, ListItemText, Typography } from '@material-ui/core';
+import { Avatar, List, ListItem, ListItemText } from '@material-ui/core';
 import React, { useState } from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
@@ -7,13 +7,12 @@ import ViewAgendaIcon from '@material-ui/icons/ViewAgenda';
 import ViewCompactIcon from '@material-ui/icons/ViewCompact';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 
 const useStyles = makeStyles(theme => ({
@@ -47,8 +46,11 @@ const useStyles = makeStyles(theme => ({
 const SidebarItem = (props) => {
     const cls = useStyles();
 
-    const [select, setSelect] = useState(1);
+    
+    const location = useLocation();
+    
     const [open, setOpen] = useState(false);
+
 
     const handleOpen = () => {
         setOpen(true);
@@ -72,9 +74,9 @@ const SidebarItem = (props) => {
 
             <div className="mt-4">
 
-                <div onClick={() => setSelect(1)}>
+                <div>
                     <NavLink to={'/'} style={{ textDecoration: "none" }}>
-                        <ListItem button selected={select === 1} >
+                        <ListItem button selected={location.pathname === '/' || location.pathname.includes('/chat')} >
 
                             <ListItemIcon>
                                 <ChatBubbleOutlineIcon style={{ color: "#334D6E" }} />
@@ -85,9 +87,9 @@ const SidebarItem = (props) => {
                     </NavLink>
                 </div>
 
-                <div onClick={() => setSelect(2)}>
+                <div>
                     <NavLink to={'/tape'} style={{ textDecoration: "none" }}>
-                        <ListItem button selected={select === 2}>
+                        <ListItem button selected = {location.pathname.includes('/tape')}>
                             <ListItemIcon>
                                 <ViewAgendaIcon style={{ color: "#334D6E" }} />
                             </ListItemIcon>
@@ -96,9 +98,9 @@ const SidebarItem = (props) => {
                     </NavLink>
                 </div>
 
-                <div onClick={() => setSelect(3)}>
+                <div>
                     <NavLink to={'/stat'} style={{ textDecoration: "none" }}>
-                        <ListItem button selected={select === 3}>
+                        <ListItem button  selected = {location.pathname.includes('/stat')}>
                             <ListItemIcon>
                                 <ViewCompactIcon style={{ color: "#334D6E" }} />
                             </ListItemIcon>
@@ -106,33 +108,13 @@ const SidebarItem = (props) => {
                         </ListItem>
                     </NavLink>
                 </div>
-
-                {/* {props.user.level === props.isAdmin && <div onClick = {() => setSelect(1)}>
-                    <ListItem button selected = {select === 1}>
-                        <ListItemIcon>
-                            <SupervisorAccountIcon style = {{color: "#334D6E"}}/>
-                        </ListItemIcon>
-                        <ListItemText primary = "Аккаунты" classes = {{primary: cls.listItem}}/>
-                    </ListItem>
-                </div>}
-
-                {props.user.level === props.isAdmin && <div onClick = {() => setSelect(2)}>
-                    <ListItem button selected = {select === 2}>
-                        <ListItemIcon>
-                            <ViewAgendaIcon style = {{color: "#334D6E"}}/>
-                        </ListItemIcon>
-                        <ListItemText primary = "Лента" classes = {{primary: cls.listItem}}/>
-                    </ListItem>
-                </div>} */}
-
-
             </div>
 
             <div className="mt-4">
                 <hr />
                 <NavLink to={'/settings'} style={{ textDecoration: "none" }}>
-                    <div onClick={() => setSelect(6)}>
-                        <ListItem button selected={select === 6}>
+                    <div>
+                        <ListItem button  selected = {location.pathname.includes('/settings')}>
                             <ListItemIcon>
                                 <MoreHorizIcon style={{ color: "#334D6E" }} />
                             </ListItemIcon>

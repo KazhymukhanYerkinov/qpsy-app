@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import { setToggleSidebar } from '../../redux/app-reducer';
 import Header from './Header';
 

@@ -48,3 +48,21 @@ export const authAPI = {
         })
     }
 }
+export const chatAPI = {
+    getChats() {
+        return instance.get(`api/v1/chat/chats`).then(response => {
+            return response.data;
+        })
+    },
+    getUserMessages(chatID) {
+        return instance.get(`api/v1/chat/messages?clientID=${chatID}`).then(response => {
+            return response.data;
+        })
+    },
+    sendMessage(clientID, text) {
+        const body = JSON.stringify({ clientID, text });
+        return instance.post(`api/v1/chat/send-message`, body).then(response => {
+            return response;
+        })
+    }
+}

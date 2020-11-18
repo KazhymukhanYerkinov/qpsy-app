@@ -3,15 +3,13 @@ import { Route } from 'react-router-dom';
 import { makeStyles } from "@material-ui/core/styles";
 import SidebarContainer from './components/Sidebar/SidebarContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
-import NotFound from './components/404/NotFound';
-import Chat from './components/Chat/Chat';
 import { compose } from 'redux';
 import { WithAuthRedirect } from './hoc/WithAuthRedirect';
 import { connect } from 'react-redux';
-import Users from './components/Users/Users';
 import UsersContainer from './components/Users/UsersContainer';
 import Settings from './components/Settings/Settings';
 import Tape from './components/Tape/Tape';
+import ChatContainer from './components/Chat/ChatContainer';
 
 
 
@@ -41,7 +39,7 @@ const App = (props) => {
           <HeaderContainer />
           <SidebarContainer />
           <Route exact path = '/' render = { () => <UsersContainer /> } />
-          <Route exact path = '/chat/:id/' render = { () => <Chat /> } />
+          <Route exact path = '/chat/:id/' render = { () => <ChatContainer /> } />
           <Route exact path = '/settings' render = { () => <Settings /> } />
           <Route exact path = '/tape' render = { () => <Tape /> } />
           

@@ -1,11 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setUsersList } from '../../redux/users-reducer';
+import { getChatsThunk } from '../../redux/users-reducer';
 import Users from './Users';
 
 
-const UsersContainer = (props) => {
-    return <Users setUsersList = { props.setUsersList } users = { props.users }/>
+class UsersContainer extends React.Component {
+
+    intervalID = 1975;
+
+    fetchChats(){
+        this.intervalID = setInterval( () => {
+            console.log("fetching chats")
+            this.props.getChatsThunk();
+        }, 5000)
+    }
+
+
+    componentDidMount() {
+        this.props.getChatsThunk();
+        this.fetchChats();
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.intervalID)
+    }
+
+    render(){
+        return <Users users = { this.props.users } />
+    }
 }
 
 let mapStateTopProps = (state) => ({
@@ -15,4 +37,4 @@ let mapStateTopProps = (state) => ({
 
 
 
-export default connect(mapStateTopProps, { setUsersList })(UsersContainer);
+export default connect(mapStateTopProps, { getChatsThunk })(UsersContainer);

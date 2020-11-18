@@ -82,6 +82,9 @@ const setConfirmSuccess = ( confirmSuccess ) => ({ type: PASSWORD_RESET_CONFIRM_
 
 export const checkAuthThunk = () => async (dispatch) => {
     if (Cookies.get('access')) {
+
+        
+
         dispatch({ type: AUTHENTICATED_SUCCESS });
     }
     else {
