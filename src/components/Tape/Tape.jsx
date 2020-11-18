@@ -23,7 +23,7 @@ const Tape = () => {
         <main className = {cls.main}>
             <div className = { cls.toolBar }/>
             <div>
-                Welcome to Tape page
+                Welcome to the tape page :) This page has not been created yet. 
             </div>
         </main>
     )

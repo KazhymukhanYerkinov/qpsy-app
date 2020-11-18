@@ -25,7 +25,7 @@ const Settings = () => {
         <main className = {cls.main}>
             <div className = {cls.toolBar}/> 
 
-            <div> Welcome to Settings page </div>
+            <div> Welcome to the settings page :) This page has not been created yet. </div>
         </main>
     )
 }

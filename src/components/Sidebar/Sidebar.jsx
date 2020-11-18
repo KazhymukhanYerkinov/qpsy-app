@@ -16,6 +16,7 @@ const Sidebar = (props) => {
 
     const { classes, theme } = props;
     
+    
 
     return (
         <>
@@ -28,12 +29,13 @@ const Sidebar = (props) => {
                     classes={{
                         paper: classes.drawerPaper,
                     }}
+
                     ModalProps={{
                         keepMounted: true
-                    }}
-                >
+                    }}>
+
                     <SidebarItem logoutThunk = { props.logoutThunk } user = { props.user } isAdmin = { props.isAdmin }
-                                 isSuperPsy = { props.isSuperPsy }  isPsy = { props.isPsy } />
+                                 isSuperPsy = { props.isSuperPsy }  isPsy = { props.isPsy } setToggleSidebar = { props.setToggleSidebar }/>
                     
                 </Drawer>
             </Hidden>

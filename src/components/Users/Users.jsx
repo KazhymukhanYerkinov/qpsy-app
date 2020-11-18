@@ -41,7 +41,7 @@ const Users = (props) => {
                     dataLength = {props.users.length}
                     // next = { fetchUsers }
                     hasMore = { hasMore }
-                    loader = {<h4> Loading... </h4>}
+                    loader = {<h4> У вас нет чатов </h4>}
                     scrollableTarget="scrollableDiv"
                     endMessage = {<p> that's all </p>}>
                     

@@ -68,13 +68,13 @@ const SidebarItem = (props) => {
                         alt=""
                         style={{ marginRight: "5%" }}
                     />
-                    <ListItemText classes={{ primary: cls.listText, secondary: cls.listEmail }} primary={`${props.user.first_name} ${props.user.last_name}`} secondary={props.user.email} />
+                    <ListItemText classes={{ primary: cls.listText, secondary: cls.listEmail }} primary={`${props.user.first_name} ${props.user.last_name}`} secondary={props.user.psy_code} />
                 </ListItem>
             </List>
 
             <div className="mt-4">
 
-                <div>
+                <div onClick = { props.setToggleSidebar }>
                     <NavLink to={'/'} style={{ textDecoration: "none" }}>
                         <ListItem button selected={location.pathname === '/' || location.pathname.includes('/chat')} >
 
@@ -87,7 +87,7 @@ const SidebarItem = (props) => {
                     </NavLink>
                 </div>
 
-                <div>
+                <div onClick = { props.setToggleSidebar }>
                     <NavLink to={'/tape'} style={{ textDecoration: "none" }}>
                         <ListItem button selected = {location.pathname.includes('/tape')}>
                             <ListItemIcon>
@@ -98,7 +98,7 @@ const SidebarItem = (props) => {
                     </NavLink>
                 </div>
 
-                <div>
+                <div onClick = { props.setToggleSidebar }>
                     <NavLink to={'/stat'} style={{ textDecoration: "none" }}>
                         <ListItem button  selected = {location.pathname.includes('/stat')}>
                             <ListItemIcon>
@@ -113,7 +113,7 @@ const SidebarItem = (props) => {
             <div className="mt-4">
                 <hr />
                 <NavLink to={'/settings'} style={{ textDecoration: "none" }}>
-                    <div>
+                    <div onClick = { props.setToggleSidebar }>
                         <ListItem button  selected = {location.pathname.includes('/settings')}>
                             <ListItemIcon>
                                 <MoreHorizIcon style={{ color: "#334D6E" }} />

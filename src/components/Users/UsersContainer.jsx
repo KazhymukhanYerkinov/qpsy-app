@@ -12,7 +12,7 @@ class UsersContainer extends React.Component {
         this.intervalID = setInterval( () => {
             console.log("fetching chats")
             this.props.getChatsThunk();
-        }, 5000)
+        }, 3000)
     }
 
 
