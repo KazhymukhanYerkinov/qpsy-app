@@ -1,23 +1,26 @@
 {
   "files": {
-    "main.css": "/qpsy-app/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/qpsy-app/static/js/main.e7a83008.chunk.js",
-    "main.js.map": "/qpsy-app/static/js/main.e7a83008.chunk.js.map",
-    "runtime-main.js": "/qpsy-app/static/js/runtime-main.933c838d.js",
-    "runtime-main.js.map": "/qpsy-app/static/js/runtime-main.933c838d.js.map",
-    "static/js/2.ab7e2662.chunk.js": "/qpsy-app/static/js/2.ab7e2662.chunk.js",
-    "static/js/2.ab7e2662.chunk.js.map": "/qpsy-app/static/js/2.ab7e2662.chunk.js.map",
-    "static/js/3.46e97e42.chunk.js": "/qpsy-app/static/js/3.46e97e42.chunk.js",
-    "static/js/3.46e97e42.chunk.js.map": "/qpsy-app/static/js/3.46e97e42.chunk.js.map",
+    "main.css": "/qpsy-app/static/css/main.0b6d8425.chunk.css",
+    "main.js": "/qpsy-app/static/js/main.d85b7394.chunk.js",
+    "main.js.map": "/qpsy-app/static/js/main.d85b7394.chunk.js.map",
+    "runtime-main.js": "/qpsy-app/static/js/runtime-main.8c3dc25c.js",
+    "runtime-main.js.map": "/qpsy-app/static/js/runtime-main.8c3dc25c.js.map",
+    "static/js/2.a8047b24.chunk.js": "/qpsy-app/static/js/2.a8047b24.chunk.js",
+    "static/js/2.a8047b24.chunk.js.map": "/qpsy-app/static/js/2.a8047b24.chunk.js.map",
+    "static/js/3.4909ef0c.chunk.js": "/qpsy-app/static/js/3.4909ef0c.chunk.js",
+    "static/js/3.4909ef0c.chunk.js.map": "/qpsy-app/static/js/3.4909ef0c.chunk.js.map",
     "index.html": "/qpsy-app/index.html",
-    "static/css/main.6dea0f05.chunk.css.map": "/qpsy-app/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.ab7e2662.chunk.js.LICENSE.txt": "/qpsy-app/static/js/2.ab7e2662.chunk.js.LICENSE.txt",
+    "static/css/main.0b6d8425.chunk.css.map": "/qpsy-app/static/css/main.0b6d8425.chunk.css.map",
+    "static/js/2.a8047b24.chunk.js.LICENSE.txt": "/qpsy-app/static/js/2.a8047b24.chunk.js.LICENSE.txt",
+    "static/media/download.82066a07.svg": "/qpsy-app/static/media/download.82066a07.svg",
+    "static/media/loading.f1079789.svg": "/qpsy-app/static/media/loading.f1079789.svg",
+    "static/media/loading2.0266ecf4.svg": "/qpsy-app/static/media/loading2.0266ecf4.svg",
     "static/media/successLogo.693b0fb4.svg": "/qpsy-app/static/media/successLogo.693b0fb4.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.933c838d.js",
-    "static/js/2.ab7e2662.chunk.js",
-    "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.e7a83008.chunk.js"
+    "static/js/runtime-main.8c3dc25c.js",
+    "static/js/2.a8047b24.chunk.js",
+    "static/css/main.0b6d8425.chunk.css",
+    "static/js/main.d85b7394.chunk.js"
   ]
 }
