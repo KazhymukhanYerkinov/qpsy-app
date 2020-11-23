@@ -10,10 +10,13 @@ class UsersContainer extends React.Component {
 
     fetchChats(){
         this.intervalID = setInterval( () => {
-            console.log("fetching chats")
-            this.props.getChatsThunk();
+            console.log("fetch chats")
+            // this.props.getChatsThunk();
+            
         }, 3000)
     }
+    
+    
 
 
     componentDidMount() {
@@ -26,12 +29,14 @@ class UsersContainer extends React.Component {
     }
 
     render(){
-        return <Users users = { this.props.users } />
+        return <Users users = { this.props.users }  />
     }
 }
 
 let mapStateTopProps = (state) => ({
     users: state.usersPage.users,
+    user: state.authPage.user,
+    
 
 })
 

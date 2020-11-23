@@ -41,6 +41,7 @@ const setClientName = (clientName) => ({ type: SET_CLIENT_NAME, clientName });
 
 
 export const getChatsThunk = () => async (dispatch) => {
+
     try {
         let data = await chatAPI.getChats();
         dispatch(setUsersList(data.chats));

@@ -9,6 +9,9 @@ import { connect } from 'react-redux';
 import { initSuccessThunk } from './redux/app-reducer';
 import EmailRecoveryContainer from './components/Authentication/EmailRecovery/EmailRecoveryContainer';
 import PasswordRecoveryContainer from './components/Authentication/PasswordRecovery/PasswordRecoveryContainer';
+import loader from './assets/images/loading.svg';
+
+import './App.css';
 
 
 
@@ -19,7 +22,11 @@ class Root extends React.Component {
 
     render() {
         if (!this.props.initialized) {
-            return <div></div>
+            return <div style = {{ height: "100vh"}} className = "d-flex justify-content-center align-items-center"> 
+                        <div>
+                            <img src = { loader }/> 
+                        </div>
+                    </div>
         }
         return (
             <Layout>

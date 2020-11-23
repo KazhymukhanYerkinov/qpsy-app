@@ -1,0 +1,37 @@
+.root {
+    background: #FFFFFF;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    padding: 2% 5% 5% 5%;
+    margin-bottom: 2%;
+    font-family: "Poppins";
+}
+
+.titleTape {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 2%;
+    font-weight: bold;
+}
+.textTape {
+    font-size: 18px;
+    text-align: left;
+}
+.imageTape {
+    margin-top: 3%;
+    color: #109CF1;
+    font-size: 15px;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .imageTape {
+        margin-top: 10%;
+        font-size: 13px;
+    }
+    .textTape {
+        font-size: 16px;
+    }
+    .titleTape {
+        font-size: 21px;
+    }
+}

@@ -46,6 +46,18 @@ export const authAPI = {
         return instance.post(`api/auth/users/reset_password_confirm/`, body).then(response => {
             return response.data;
         })
+    },
+
+    updateEmail(email) {
+        const body = JSON.stringify({ email });
+        return instance.post(`api/v1/users/update-email`, body).then(response => {
+            return response;
+        }) 
+    },
+    updateStatus() {
+        return instance.post(`api/v1/users/update-status`).then(response => {
+            return response;
+        })
     }
 }
 export const chatAPI = {
@@ -63,6 +75,14 @@ export const chatAPI = {
         const body = JSON.stringify({ clientID, text });
         return instance.post(`api/v1/chat/send-message`, body).then(response => {
             return response;
+        })
+    }
+}
+
+export const tapeAPI = {
+    getTapes() {
+        return instance.get(`api/v1/news/list`).then(response => {
+            return response.data;
         })
     }
 }

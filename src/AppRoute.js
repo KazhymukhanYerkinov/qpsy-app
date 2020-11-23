@@ -7,9 +7,9 @@ import { compose } from 'redux';
 import { WithAuthRedirect } from './hoc/WithAuthRedirect';
 import { connect } from 'react-redux';
 import UsersContainer from './components/Users/UsersContainer';
-import Settings from './components/Settings/Settings';
-import Tape from './components/Tape/Tape';
 import ChatContainer from './components/Chat/ChatContainer';
+import SettingContainer from './components/Settings/SettingContainer';
+import TapeContainer from './components/Tape/TapeContainer';
 
 
 
@@ -40,8 +40,8 @@ const App = (props) => {
           <SidebarContainer />
           <Route exact path = '/' render = { () => <UsersContainer /> } />
           <Route exact path = '/chat/:id/' render = { () => <ChatContainer /> } />
-          <Route exact path = '/settings' render = { () => <Settings /> } />
-          <Route exact path = '/tape' render = { () => <Tape /> } />
+          <Route exact path = '/settings' render = { () => <SettingContainer /> } />
+          <Route exact path = '/tape' render = { () => <TapeContainer /> } />
           
           
           

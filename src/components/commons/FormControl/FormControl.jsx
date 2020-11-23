@@ -2,11 +2,13 @@ import { FormControl, FormHelperText, IconButton, Input, InputAdornment, InputLa
 import Checkbox from '@material-ui/core/Checkbox';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import React  from 'react';
+import React from 'react';
 
 
 import SentimentSatisfiedSharpIcon from '@material-ui/icons/SentimentSatisfiedSharp';
 import AttachFileSharpIcon from '@material-ui/icons/AttachFileSharp';
+import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
+
 
 
 
@@ -22,21 +24,23 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-export const FormControlText = ({ label, input, meta: { touched, invalid, error } }) => {
+export const FormControlText = ({ label, input, disabled, defaultValue, meta: { touched, invalid, error } }) => {
     return (
         <TextField
+            disabled={disabled}
+            defaultValue={defaultValue}
             label={label}
             placeholder={label}
             type={'text'}
+            margin = "normal"
             error={touched && invalid}
             helperText={touched && error}
             fullWidth
             {...input}
+
         />
     )
 }
-
-
 
 
 export const FormControlCheckBox = ({ input }) => {
@@ -68,6 +72,7 @@ export const FormControlPassword = ({ label, input, meta: { touched, invalid, er
             <InputLabel> {label} </InputLabel>
             <Input
                 fullWidth
+
                 error={touched && invalid}
                 helperText={touched && error}
                 type={values.showPassword ? 'text' : 'password'}
@@ -117,3 +122,31 @@ export const FormControlSendMessage = ({ label, input }) => {
     )
 
 }
+
+export const FormControlTextField = ({label, disabled, defaultValue}) => {
+    return (
+        <TextField
+            disabled={disabled}
+            defaultValue={defaultValue}
+            label={label}
+            placeholder={label}
+            type={'text'}
+            margin = "normal"
+            fullWidth />
+    )
+
+}
+export const FormControlAutoSelect = ({ label, disabled, object }) => {
+    return (
+       <TextField
+            fullWidth
+            disabled = {disabled}
+            defaultValue = {object}
+            label={label} 
+            InputProps = {{ endAdornment: <IconButton> <ArrowDropUpIcon style = {{ color: "#109CF1" }}/>  </IconButton>}} />
+    )
+}
+
+
+
+

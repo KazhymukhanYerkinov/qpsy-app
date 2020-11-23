@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import UserItem from './UserItem/UserItem';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import loading2 from '../../assets/images/loading2.svg';
 
 
 const useStyles = makeStyles(theme => ({
@@ -20,7 +21,7 @@ const useStyles = makeStyles(theme => ({
 const Users = (props) => {
     const cls = useStyles();
     const [hasMore, setHasMore] = useState(true);
-
+    
 
     // const fetchUsers = () => {
     //     if (props.users.length >= 200) {
@@ -41,7 +42,7 @@ const Users = (props) => {
                     dataLength = {props.users.length}
                     // next = { fetchUsers }
                     hasMore = { hasMore }
-                    loader = {<h4> У вас нет чатов </h4>}
+                    loader = {<div className = "text-center"> <img src = {loading2} /> </div>}
                     scrollableTarget="scrollableDiv"
                     endMessage = {<p> that's all </p>}>
                     

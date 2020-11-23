@@ -24,9 +24,9 @@ let initialState = {
     user: {},       
 
     confirmSuccess: false,
-    isAdmin: 'Психолог',
-    isSuperPsy: 'СуперПсихолог',
-    isPsy: 'Администратор',
+    isAdmin: 'Администратор',
+    isSuperPsy: 'Специалист',
+    isPsy: 'Психолог',
 }
 
 const authReducer = (state = initialState, action) => {
@@ -143,6 +143,24 @@ export const resetConfirmThunk = (uid, token, new_password, re_new_password) => 
     } 
     else {
         dispatch(stopSubmit("password_recovery", {_error: " Пароли не совпадают. Введите повторно пароль и подтверждение."}))
+    }
+}
+
+export const updateEmail = (email) => async (dispatch) => {
+    try {
+        let res = await authAPI.updateEmail(email);
+    } catch(err) {
+        console.log(err)
+    }
+}
+
+export const updateStatusThunk = () => async (dispatch) => {
+    
+    try {
+        let res = await authAPI.updateStatus();
+        dispatch(loadUserThunk());
+    } catch(err) {
+        console.log(err)
     }
 }
 
